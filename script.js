@@ -32,7 +32,6 @@ function togglePlay() {
 video.addEventListener('ended', showPlayIcon);
 
 // Progress Bar ---------------------------------- //
-// calculate display time format
 function displayTimee(time) {
   const minutes = Math.floor(time / 60);
   let seconds = Math.floor(time % 60);
@@ -43,7 +42,6 @@ function displayTimee(time) {
 
 // update progress bar as video plays
 function updateProgress() {
-  // console.log('currentTime', video.currentTime, 'duration', video.duration);
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
   displayTimee(64);
   currentTime.textContent = `${displayTimee(video.currentTime)} /`;
@@ -52,11 +50,9 @@ function updateProgress() {
 
 // click to seek with in the video
 function setProgress(e) {
-  // console.log(e);
   const newTime = e.offsetX / progressRange.offsetWidth;
   progressBar.style.width = `${newTime * 100}%`;
   video.currentTime = newTime * video.duration;
-  // console.log(newTime);
 }
 
 // Volume Controls --------------------------- //
@@ -112,8 +108,6 @@ function toggleMute() {
 
 // Change Playback Speed -------------------- //
 function changeSpeed() {
-  // console.log('video playback rate', video.playbackRate);
-  // console.log('selectd value', speed.value);
   video.playbackRate = speed.value;
 }
 
